@@ -9,11 +9,15 @@ export class UsersService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  listPost(page: number, limit: number, order: string, order_by: string) {
+  listUsers(per_page: number, page: number, order: string, sort: string, search_pattern?: string) {
     let headers = new HttpHeaders();
-    let _headers = headers.append('Accept', `application/vnd.github+json`);
-    let url = `users`;
+    let _headers = headers.append('accept', `application/vnd.github+json`);
+    let url = `search/users?q=YOUR_NAME&per_page=${per_page}&page=${page}&order=${order}&sort=${sort}`;
 
-    return this._httpClient.get(`${environment.apiUrl}/${url}`, { headers: headers });
+    if (search_pattern) {
+      url = url.replace('YOUR_NAME', search_pattern);
+    }
+
+    return this._httpClient.get(`${environment.apiUrl}/${url}`, { headers: _headers });
   }
 }
