@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UsersService } from './users.service';
 
 @Component({
@@ -20,7 +21,10 @@ export class UsersComponent implements OnInit {
   sort: 'followers' | 'repositories' | 'joined' = 'followers';
   search = '';
 
-  constructor(private _userService: UsersService) { }
+  constructor(
+    private _router: Router,
+    private _userService: UsersService
+  ) { }
 
   ngOnInit(): void {
     this.listUsers();
@@ -40,6 +44,10 @@ export class UsersComponent implements OnInit {
   pageChanged(page: number) {
     this.page = page;
     this.listUsers();
+  }
+
+  navigateProfile(id: number) {
+    this._router.navigate([`users/${id}`]);
   }
 
 }
