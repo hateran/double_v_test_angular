@@ -12,7 +12,6 @@ export class OrganizationsComponent implements OnInit {
 
   organizations: any[] = [];
 
-  page: number = 1;
   per_page: number = 10;
 
   constructor(private _userService: UsersService) { }
@@ -33,8 +32,7 @@ export class OrganizationsComponent implements OnInit {
 
   listOrgs() {
     this.loading = true;
-    this._userService.listOrgs(this.login, this.per_page, this.page).subscribe((response: any) => {
-      console.log(response);
+    this._userService.listOrgs(this.login, this.per_page).subscribe((response: any) => {
       this.organizations = response;
       this.loading = false;
     }, error => {

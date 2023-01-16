@@ -29,10 +29,10 @@ export class UsersService {
     return this._httpClient.get(`${environment.apiUrl}/${url}`, { headers: _headers });
   }
 
-  listOrgs(login: string, per_page: number, page: number) {
+  listOrgs(login: string, per_page: number) {
     let headers = new HttpHeaders();
     let _headers = headers.append('accept', `application/vnd.github+json`);
-    let url = `users/${login}/orgs?per_page=${per_page}&page=${page}`;
+    let url = `users/${login}/orgs?per_page=${per_page}`;
 
     return this._httpClient.get(`${environment.apiUrl}/${url}`, { headers: _headers });
   }
