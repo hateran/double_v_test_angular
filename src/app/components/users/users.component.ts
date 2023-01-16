@@ -27,7 +27,7 @@ export class UsersComponent implements OnInit {
   constructor(
     private _userService: UsersService,
     public dialog: MatDialog
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.listUsers();
@@ -41,8 +41,10 @@ export class UsersComponent implements OnInit {
       this.final_page = Math.ceil(this.total / this.per_page);
       this.loading = false;
     }, error => {
-      if (error.error.message.includes("API rate limit")) {
-        this.showToastr();
+      if (error.error.message) {
+        if (error.error.message.includes("API rate limit")) {
+          this.showToastr();
+        }
       }
       this.loading = false;
     });
