@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { UsersService } from './users.service';
 import { Toast } from 'bootstrap';
+import { ProfileComponent } from './profile/profile.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-users',
@@ -24,9 +25,9 @@ export class UsersComponent implements OnInit {
   search = '';
 
   constructor(
-    private _router: Router,
-    private _userService: UsersService
-  ) { }
+    private _userService: UsersService,
+    public dialog: MatDialog
+    ) { }
 
   ngOnInit(): void {
     this.listUsers();
@@ -71,8 +72,15 @@ export class UsersComponent implements OnInit {
     this.listUsers();
   }
 
-  navigateProfile(id: number) {
-    this._router.navigate([`users/${id}`]);
+  openProfile(element: any) {
+    const dialogRefForm = this.dialog.open(ProfileComponent, {
+      width: '80%',
+      data: { user: element }
+    });
+
+    dialogRefForm.afterClosed().subscribe(result => {
+      if (result) { }
+    });
   }
 
 }

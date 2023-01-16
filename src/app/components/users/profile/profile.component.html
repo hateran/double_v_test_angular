@@ -1,1 +1,46 @@
-<p>profile works!</p>
+<div class="container">
+    <div class="container-header d-flex align-items-center">
+        <img class="rounded-circle avatar" [src]="data.user.avatar_url" alt="">
+
+        <div>
+            <span><strong>Username:</strong> {{data.user.login}}</span> <br />
+            <div class="git-info d-flex align-items-center">
+                <img class="rounded-circle icon" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="">
+                <span><strong>Github: </strong> <a [href]="data.user.html_url"
+                        target="_blank">{{data.user.html_url}}</a></span>
+            </div>
+        </div>
+    </div>
+
+    <hr style="border: 3px solid var(--color_1);">
+
+    <mat-tab-group>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <lord-icon src="https://cdn.lordicon.com/rjzlnunf.json" trigger="loop"
+                    colors="primary:#121331,secondary:#3080e8">
+                </lord-icon>
+                Followers
+            </ng-template>
+            Content 1
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <lord-icon src="https://cdn.lordicon.com/uukerzzv.json" trigger="loop"
+                    colors="primary:#121331,secondary:#3080e8">
+                </lord-icon>
+                Organizations
+            </ng-template>
+            Content 2
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <lord-icon src="https://cdn.lordicon.com/ochimkct.json" trigger="loop"
+                    colors="primary:#121331,secondary:#3080e8">
+                </lord-icon>
+                Repositories
+            </ng-template>
+            Content 3
+        </mat-tab>
+    </mat-tab-group>
+</div>

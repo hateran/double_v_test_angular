@@ -70,7 +70,7 @@
                         </tr>
                     </thead>
                     <tbody class="table-group-divider" *ngIf="!loading">
-                        <tr *ngFor="let element of users; let index_user = index" (click)="navigateProfile(element.id)">
+                        <tr *ngFor="let element of users; let index_user = index" (click)="openProfile(element)">
                             <th scope="row">{{index_user + 1}}</th>
                             <td>{{element.id}}</td>
                             <td>

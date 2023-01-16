@@ -1,0 +1,17 @@
+.container {
+    .container-header {
+        gap: 1rem;
+
+        .avatar {
+            width: 100px;
+        }
+
+        .git-info {
+            gap: 0.5rem;
+
+            .icon {
+                width: 20px;
+            }
+        }
+    }
+}
