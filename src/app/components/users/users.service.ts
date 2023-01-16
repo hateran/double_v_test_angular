@@ -36,4 +36,12 @@ export class UsersService {
 
     return this._httpClient.get(`${environment.apiUrl}/${url}`, { headers: _headers });
   }
+
+  listRepos(login: string, per_page: number, page: number, direction: string, sort: string, type: string) {
+    let headers = new HttpHeaders();
+    let _headers = headers.append('accept', `application/vnd.github+json`);
+    let url = `users/${login}/repos?per_page=${per_page}&page=${page}&direction=${direction}&sort=${sort}&type=${type}`;
+
+    return this._httpClient.get(`${environment.apiUrl}/${url}`, { headers: _headers });
+  }
 }
