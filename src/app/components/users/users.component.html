@@ -100,13 +100,13 @@
                     <li class="page-item" [ngClass]="page == 1 ? 'disabled':''">
                         <span class="page-link" (click)="pageChanged(1)">1</span>
                     </li>
-                    <li class="page-item" [ngClass]="page == 2 ? 'disabled':''">
+                    <li class="page-item" [ngClass]="page == 2 ? 'disabled':''" *ngIf="final_page > 1">
                         <span class="page-link" (click)="pageChanged(2)">2</span>
                     </li>
-                    <li class="page-item" [ngClass]="page == 3 ? 'disabled':''">
+                    <li class="page-item" [ngClass]="page == 3 ? 'disabled':''" *ngIf="final_page > 2">
                         <span class="page-link" (click)="pageChanged(3)">3</span>
                     </li>
-                    <li class="page-item">
+                    <li class="page-item" [ngClass]="final_page == page ? 'disabled':''">
                         <span class="page-link" (click)="pageChanged(page + 1)">Next</span>
                     </li>
                 </ul>

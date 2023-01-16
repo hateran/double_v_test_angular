@@ -17,6 +17,7 @@ export class UsersComponent implements OnInit {
   total: number = 0;
   page: number = 1;
   per_page: number = 10;
+  final_page: number = 1;
 
   order: 'desc' | 'asc' = 'desc';
   sort: 'followers' | 'repositories' | 'joined' = 'followers';
@@ -36,6 +37,7 @@ export class UsersComponent implements OnInit {
     this._userService.listUsers(this.per_page, this.page, this.order, this.sort, this.search ? this.search : undefined).subscribe((response: any) => {
       this.users = response.items;
       this.total = response.total_count;
+      this.final_page = Math.ceil(this.total / this.per_page);
       this.loading = false;
     }, error => {
       if (error.error.message.includes("API rate limit")) {
