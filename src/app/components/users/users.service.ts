@@ -20,4 +20,12 @@ export class UsersService {
 
     return this._httpClient.get(`${environment.apiUrl}/${url}`, { headers: _headers });
   }
+
+  listFollowers(login: string, per_page: number, page: number) {
+    let headers = new HttpHeaders();
+    let _headers = headers.append('accept', `application/vnd.github+json`);
+    let url = `users/${login}/followers?per_page=${per_page}&page=${page}`;
+
+    return this._httpClient.get(`${environment.apiUrl}/${url}`, { headers: _headers });
+  }
 }

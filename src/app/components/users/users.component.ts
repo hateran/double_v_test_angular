@@ -77,6 +77,7 @@ export class UsersComponent implements OnInit {
   openProfile(element: any) {
     const dialogRefForm = this.dialog.open(ProfileComponent, {
       width: '80%',
+      maxHeight: '90%',
       data: { user: element }
     });
 
