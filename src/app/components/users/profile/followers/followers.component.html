@@ -1,21 +1,27 @@
-<ul class="cards cards-overflow">
-    <li *ngFor="let element of followers">
-        <a class="card">
-            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" class="card__image" alt="" />
-            <div class="card__overlay">
-                <div class="card__header">
-                    <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
-                        <path />
-                    </svg>
-                    <img class="card__thumb" [src]="element.avatar_url" alt="" />
-                    <div class="card__header-text">
-                        <h3 class="card__title">{{element.login}}</h3>
-                        <span class="card__status">{{element.id}}</span>
+<div [ngClass]="followers.length == 0 ? 'my-2':''">
+    <span *ngIf="followers.length == 0">
+        <strong>No followers to show</strong>
+    </span>
+
+    <ul class="cards cards-overflow" *ngIf="followers.length > 0">
+        <li *ngFor="let element of followers">
+            <a class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" class="card__image" alt="" />
+                <div class="card__overlay">
+                    <div class="card__header">
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                            <path />
+                        </svg>
+                        <img class="card__thumb" [src]="element.avatar_url" alt="" />
+                        <div class="card__header-text">
+                            <h3 class="card__title">{{element.login}}</h3>
+                            <span class="card__status">{{element.id}}</span>
+                        </div>
                     </div>
+                    <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
+                        blanditiis?</p>
                 </div>
-                <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-                    blanditiis?</p>
-            </div>
-        </a>
-    </li>
-</ul>
+            </a>
+        </li>
+    </ul>
+</div>

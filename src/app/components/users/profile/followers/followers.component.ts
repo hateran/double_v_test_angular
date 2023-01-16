@@ -35,7 +35,6 @@ export class FollowersComponent implements OnInit {
     this.loading = true;
     this._userService.listFollowers(this.login, this.per_page, this.page).subscribe((response: any) => {
       this.followers = response;
-      console.log(this.followers)
       this.loading = false;
     }, error => {
       this.loading = false;
