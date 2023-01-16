@@ -1,46 +1,54 @@
 <div class="container my-5">
     <div class="card p-4">
         <div class="card-body">
-            <h5 class="card-title">List Users</h5>
+            <h5 class="card-title"><strong>List Users</strong></h5>
 
-            <div class="d-flex my-3">
-                <div class="">
-                    <input type="text" class="form-control" placeholder="Search user" [(ngModel)]="search"
-                        (input)="listUsers()">
-                </div>
+            <div class="d-flex align-items-center justify-content-between">
+                <span><strong>Total {{total}}</strong></span>
 
-                <div class="dropdown mx-2">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Sort
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <span class="dropdown-item" [ngClass]="sort == 'followers' ? 'active':''">Followers</span>
-                        </li>
-                        <li>
-                            <span class="dropdown-item"
-                                [ngClass]="sort == 'repositories' ? 'active':''">Repositories</span>
-                        </li>
-                        <li>
-                            <span class="dropdown-item" [ngClass]="sort == 'joined' ? 'active':''">Joined</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Order
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <span class="dropdown-item" [ngClass]="order == 'desc' ? 'active':''">Descending</span>
-                        </li>
-                        <li>
-                            <span class="dropdown-item" [ngClass]="order == 'asc' ? 'active':''">Ascending</span>
-                        </li>
-                    </ul>
+                <div class="d-flex my-3">
+                    <div class="">
+                        <input type="text" class="form-control" placeholder="Search user" [(ngModel)]="search"
+                            (input)="listUsers()">
+                    </div>
+    
+                    <div class="dropdown mx-2">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Sort
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <span class="dropdown-item" [ngClass]="sort == 'followers' ? 'active':''"
+                                    (click)="sortChanged('followers')">Followers</span>
+                            </li>
+                            <li>
+                                <span class="dropdown-item" [ngClass]="sort == 'repositories' ? 'active':''"
+                                    (click)="sortChanged('repositories')">Repositories</span>
+                            </li>
+                            <li>
+                                <span class="dropdown-item" [ngClass]="sort == 'joined' ? 'active':''"
+                                    (click)="sortChanged('joined')">Joined</span>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Order
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <span class="dropdown-item" [ngClass]="order == 'desc' ? 'active':''"
+                                    (click)="orderChanged('desc')">Descending</span>
+                            </li>
+                            <li>
+                                <span class="dropdown-item" [ngClass]="order == 'asc' ? 'active':''"
+                                    (click)="orderChanged('asc')">Ascending</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 

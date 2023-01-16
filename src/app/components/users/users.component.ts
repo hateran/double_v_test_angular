@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from './users.service';
-import { Toast } from 'bootstrap'
+import { Toast } from 'bootstrap';
 
 @Component({
   selector: 'app-users',
@@ -34,15 +34,8 @@ export class UsersComponent implements OnInit {
   listUsers() {
     this.loading = true;
     this._userService.listUsers(this.per_page, this.page, this.order, this.sort, this.search ? this.search : undefined).subscribe((response: any) => {
-      if (response.message) {
-        if (response.message.includes("API rate limit")) {
-          this.showToastr();
-        }
-      } else {
-        this.users = response.items;
-        this.total = response.total_count;
-      }
-
+      this.users = response.items;
+      this.total = response.total_count;
       this.loading = false;
     }, error => {
       if (error.error.message.includes("API rate limit")) {
@@ -63,6 +56,16 @@ export class UsersComponent implements OnInit {
 
   pageChanged(page: number) {
     this.page = page;
+    this.listUsers();
+  }
+
+  sortChanged(option: 'followers' | 'repositories' | 'joined') {
+    this.sort = option;
+    this.listUsers();
+  }
+
+  orderChanged(option: 'desc' | 'asc') {
+    this.order = option;
     this.listUsers();
   }
 
